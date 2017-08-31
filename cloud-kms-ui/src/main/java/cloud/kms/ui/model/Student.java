@@ -1,7 +1,4 @@
-package cloud.kms.service.domain;
-
-
-
+package cloud.kms.ui.model;
 
 public class Student {
 	
@@ -59,3 +56,4 @@ public class Student {
 	
 	
 }
+
