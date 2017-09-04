@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.swing.plaf.synth.SynthDesktopIconUI;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -30,5 +31,16 @@ public class StudentController {
 		list.add(studentB);
 		return list;
 		
+	}
+	
+	@Value("${mysqldb.datasource.url}")
+	String url="http";
+	
+	@Value("${server.port}")
+	String sPort; 
+	
+	@RequestMapping(value="/config")
+	public String config() {
+		return url+" from port:"+sPort;
 	}
 }
