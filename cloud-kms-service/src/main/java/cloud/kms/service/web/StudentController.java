@@ -5,11 +5,13 @@ import java.util.List;
 
 import javax.swing.plaf.synth.SynthDesktopIconUI;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import cloud.kms.service.dao.StudentMapper;
 import cloud.kms.service.domain.Student;
 
 @RestController
@@ -42,5 +44,13 @@ public class StudentController {
 	@RequestMapping(value="/config")
 	public String config() {
 		return url+" from port:"+sPort;
+	}
+	
+	@Autowired
+	StudentService student;
+	
+	@RequestMapping(value="/studentlist")
+	public List<Student> findStudentList() {
+		return student.findStudentList();
 	}
 }
